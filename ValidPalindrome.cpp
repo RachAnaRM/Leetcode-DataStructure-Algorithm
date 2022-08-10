@@ -20,7 +20,7 @@ public:
             else if(!isalnum(s[j])) {
                 j--;
             }
-            else if(s[i] != s[j]) {
+            else if(tolower(s[i]) != tolower(s[j])) {
                 return false;
             }
             else {
