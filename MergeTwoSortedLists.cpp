@@ -10,7 +10,7 @@
  */
 
 // lists are sorted
-// Algorithm:
+// Algorithm (iterative):
 // 1. check for base condition, if list1 is null return list2 and if list2 is null return list1 as if there will be only one list
 // 2. if list1->val > list2->val swap the lists so that list1 have smaller value
 // 3. assign list1 node to ans
@@ -30,19 +30,21 @@ public:
         if(list1 == NULL) return list2;
         if(list2 == NULL) return list1;
         
+        // iterative approach
         if(list1 -> val > list2 -> val) swap(list1, list2);
-        ListNode * res = list1;
+        ListNode * ans = list1;
         while(list1 !=  NULL && list2 != NULL){
-            ListNode * tmp = NULL;
+            ListNode * temp = NULL;
             while(list1 != NULL && list1 -> val <= list2 -> val){
-                tmp = list1;
+                temp = list1;
                 list1 = list1 -> next;
             }
-            tmp -> next = list2;
+            temp -> next = list2;
             swap(list1, list2);
         }
-        return res;
+        return ans;
         
+        // recursive approach
         // if(list1->val >= list2->val) {
         //     list2->next = mergeTwoLists(list1, list2-> next);
         // }
